@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import { AbsoluteFill, Audio, interpolate, Series, staticFile, useCurrentFrame } from 'remotion';
 import { tokens } from './tokens';
+import { getPreset } from './visual/theme';
 import { LyricLayer } from './components/LyricLayer';
 import { S1_Intro } from './scenes/S1_Intro';
 import { S2_Verse } from './scenes/S2_Verse';
@@ -12,6 +13,7 @@ export { TOTAL_FRAMES } from './timing';
 
 export const Video: FC = () => {
   const frame = useCurrentFrame();
+  const p = getPreset();
   const volume = interpolate(
     frame,
     [TOTAL_FRAMES - tokens.audio.fadeOut, TOTAL_FRAMES],
@@ -20,7 +22,7 @@ export const Video: FC = () => {
   );
 
   return (
-    <AbsoluteFill style={{ backgroundColor: tokens.color.bg }}>
+    <AbsoluteFill style={{ backgroundColor: p.palette.bg }}>
       <Series>
         <Series.Sequence durationInFrames={INTRO}>
           <S1_Intro />

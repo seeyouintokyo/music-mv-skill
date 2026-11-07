@@ -2,6 +2,8 @@
 
 一个 WorkBuddy / Claude 风格的 Skill：**给一首歌做竖屏 MV**。给一个带人声的 mp3 和它的歌词，产出一条 ≤60 秒的 1080×1920 mp4 —— 歌词跟着真实人声出现，画面跟着鼓点动，四屏全部由代码画出来，不用任何外部图片素材。
 
+内置 **6 套视觉预设**（月相夜空 / 声波海浪 / 城市频谱 / 透视网格 / 花瓣放射 / 沙丘山脊），改 `content.ts` 一个字符串就换整套主图形、配色、转场、字幕动效和鼓点反馈。换首歌不必长得跟示例一样。
+
 作者微信：**staraiwork**（用的时候卡住了可以直接找我）
 
 ## 先看效果
@@ -62,7 +64,7 @@ song.mp3 + 歌词.txt ──▶ 探歌（ffprobe + ASR）──▶ 写分镜【�
 
 **明确不需要配的**：没有 `.env`，没有 API Key，没有账号注册，没有云服务，没有素材下载，没有网络字体。整个渲染过程离线可跑。
 
-### 3. 项目里要改的（只有三处）
+### 3. 项目里要改的（只有三处文件）
 
 铺好项目后，换一首歌只动这三个文件，画面代码一行不用改：
 
@@ -70,11 +72,24 @@ song.mp3 + 歌词.txt ──▶ 探歌（ffprobe + ASR）──▶ 写分镜【�
 |---|---|
 | `public/song.mp3` | 换成你的歌 |
 | `歌词时间轴.json` | 九句（或 N 句）的 `start` / `end`，单位秒，相对 MV 开头 |
-| `src/content.ts` | `songTitle` 歌名；`intro / verse / chorus / outro` 四段秒数，总长 ≤60 秒 |
+| `src/content.ts` | `songTitle` 歌名；`intro / verse / chorus / outro` 四段秒数（总长 ≤60 秒）；`preset` 视觉预设 |
 
-想换风格再改 `src/tokens.ts`（配色、字号、间距、动画帧数全在这一个文件）；想做横屏把 `Root.tsx` 的 `tokens.canvas` 换成 `tokens.canvasHorizontal`。
+`preset` 可选 `moon / wave / city / grid / petal / dune`，见下表。`src/tokens.ts` 管尺寸、字号、间距、动画节奏；配色由所选预设的 `palette` 决定。想做横屏把 `Root.tsx` 的 `tokens.canvas` 换成 `tokens.canvasHorizontal`。
 
-### 4. 两个必须你开口的地方
+### 4. 六套视觉预设
+
+| preset | 主图形 | 配色 | 转场 | 字幕 | 鼓点 | 适配歌词 |
+|---|---|---|---|---|---|---|
+| `moon` | 月相 + 陨石坑 | 深蓝 / 冷蓝 → 副歌暖黄 | 闪白 | 淡入居中 | 同心光圈 | 月、星、夜、温柔 |
+| `wave` | 正弦波 | 深海青 / 青绿 | 溶解 | 上滑 | 星点闪烁 | 海、浪、雨、风 |
+| `city` | 频谱竖条 | 紫黑 / 品红 + 琥珀 | 横扫 | 缩放左对齐 | 底部频谱柱 | 城市、街、灯、电子 |
+| `grid` | 透视网格 | 墨黑 / 电蓝 + 亮绿 | 缩放入屏 | 逐字显现 | 描边脉冲 | 未来、代码、科技 |
+| `petal` | 旋转花瓣 | 暖褐 / 珊瑚 | 溶解 | 淡入居中 | 同心光圈 | 花、春、暖、爱 |
+| `dune` | 三层山脊 | 沙棕 / 沙金 + 暮紫 | 横扫 | 上滑 | 星点闪烁 | 山、沙、远方、公路 |
+
+每套还带景深叠加层（光晕 / 云带 / 远山 / 速度线 / 星座连线），四层画在同一个 SVG 里。新增母题的方法见 [`references/visual-system.md`](references/visual-system.md)。
+
+### 5. 两个必须你开口的地方
 
 分镜写完等你说「可以」；20 秒预览出来等你听一句「第几句早了/晚了半秒」。其余全自动。
 
@@ -97,12 +112,14 @@ cp -R music-mv-skill ~/.workbuddy/skills/music-mv
 先给我看分镜。
 ```
 
-它会先量歌、出四屏分镜，你说「可以」之后才铺项目、排时间轴、写画面、渲染。成片在项目 `out/mv.mp4`。
+它会先量歌、出四屏分镜（含选哪套视觉预设、四屏构图差异），你说「可以」之后才铺项目、排时间轴、写画面、渲染。成片在项目 `out/mv.mp4`。
+
+`--preset auto` 按歌词关键词推荐；也可以直接指定 `moon / wave / city / grid / petal / dune`，或铺好后改 `src/content.ts` 的 `preset` 一行。换预设后 `npm install` 和画面代码都不用动。
 
 命令行单独跑：
 
 ```bash
-node scripts/scaffold.mjs my-mv --song 我的歌.mp3 --lyrics 歌词.txt --title "歌名"
+node scripts/scaffold.mjs my-mv --song 我的歌.mp3 --lyrics 歌词.txt --title "歌名" --preset auto
 cd my-mv
 python3 tools/probe_song.py public/song.mp3       # 量真实参数
 npm install --registry=https://registry.npmmirror.com
@@ -123,12 +140,14 @@ music-mv-skill/
 │   └── probe_song.py                 # 量歌：时长、封面流、音量、静音间隙
 ├── assets/
 │   ├── tokens.ts                     # 配色 / 字号 / 间距 / 动画节奏（换风格只改这个）
-│   ├── scaffold/                     # 项目骨架：四屏、组件、hooks、content.ts、占位歌词
+│   ├── scaffold/                     # 项目骨架：四屏、VisualStage、hooks、content.ts、占位歌词
+│   │   ├── src/visual/               # 6 套预设、主图形/叠加层/背景层、转场、鼓点层
 │   │   ├── package.json / tsconfig.json   # 版本锁定的依赖
 │   ├── diagram/                      # 工作原理图：SVG（PPT 可编辑）+ PNG + HTML + 生成脚本
 │   └── preview/                      # README 用的三张竖屏静帧
 ├── references/
 │   ├── remotion-recipes.md           # 月相、轨道、光圈、星点、鼓点联动、歌词折行的画法
+│   ├── visual-system.md              # 视觉预设架构、6 套母题、新增预设方法、三个渲染坑
 │   └── song-sources.md               # 歌的三条来源、MiniMax 410 实测、网页版提示词模板
 └── examples/moon/                    # 已完成的《月亮在等你》：分镜、时间轴、全部源码、说明
 ```
@@ -142,6 +161,8 @@ music-mv-skill/
 5. **长句末行只剩一个字**：按歌词自带空格折行，见 `references/remotion-recipes.md` 第 7 条。
 6. **画面不跟鼓点**：`<Series.Sequence>` 内的帧是相对帧，读音频要加 `OFFSET`，见 `references/remotion-recipes.md` 第 5 条。
 7. **人声比字幕整体早**：裁切偏移没同步减到时间轴和节拍帧号，或者根本不该裁——长歌先算副歌对齐再决定。
+8. **主图形整层消失、只剩星点和云带**：静音段 `useBass()` 返回 NaN，让所有 `r={... + bass}` 变成 `r="NaN"`。骨架已加 `Number.isFinite` 兜底；自己加依赖鼓点的表达式时同样要防 NaN，见 `references/visual-system.md`。
+9. **所有歌长得一样**：默认 `preset: 'moon'`。分镜时按歌词和曲风换预设，别跳过这一步。
 8. **想用 API 生成歌**：先读 `references/song-sources.md`，别在 410 上反复重试。
 
 ## 七、许可

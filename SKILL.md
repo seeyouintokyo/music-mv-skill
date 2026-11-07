@@ -20,7 +20,8 @@ description: 用 Remotion 代码画一条竖屏音乐 MV（≤60 秒），歌词
 | 分镜确认 | 必须 | 出了 `分镜.md` 等用户说「可以」再动手 |
 | 20 秒预览校准 | 必须 | 让用户听，按「第几句早了/晚了半秒」改 json |
 | 歌名 / 主意象 / 画幅 / 时长 | 否 | 歌名取文件名；主意象从歌词里挑一个；竖屏 1080×1920 / 30fps；总长 ≤60 秒 |
-| `tokens.ts` | 否 | 用 `assets/tokens.ts` |
+| 视觉预设 | 否，但分镜里必须写清选了哪套 | 从 6 套 preset 里挑，见第七节；不是所有歌都该长成月亮 |
+| `tokens.ts` | 否 | 用 `assets/tokens.ts`；它只管尺寸/字号/节奏，配色由 preset 决定 |
 | API Key | **不需要** | 本 Skill 不生成歌，只消费用户给的文件 |
 
 提示词里已经写明的事（歌从哪来、歌词、横竖屏、时长）直接照做，不要再问。需要用户开口的只有「确认分镜」和「听预览对歌词」两处。
@@ -52,6 +53,10 @@ python3 <skill目录>/scripts/probe_song.py <歌.mp3>
 在项目根写 `分镜.md`，表格五列：`屏 / 段落 / 时间 / 画面上有什么、怎么动 / 这段的歌词`。
 **一屏对应歌的一段**（前奏、主歌、副歌、尾奏），不按句切。四屏是默认结构。
 从歌词里挑**一个主意象**（月亮、星空、海浪、城市灯光……），全片不换题材。
+**不换题材不等于不换画面。** 分镜里必须写清两件事：
+
+1. 选哪套视觉预设（`moon / wave / city / grid / petal / dune`），为什么贴合歌词和曲风。
+2. 四屏的构图差异——主歌每句怎么换机位、副歌推近多少、尾奏怎么收回。只写「月亮慢慢变圆」不算分镜。
 
 写完发给用户，等确认。
 
@@ -63,10 +68,13 @@ cd <项目目录>
 npm install --registry=https://registry.npmmirror.com
 ```
 
-铺出的是可运行骨架：`src/scenes/S1–S4` 四屏、`src/components/` 共用部件、`src/hooks/useBass.ts` 鼓点、`src/content.ts` 歌名与四段秒数、根目录 `歌词时间轴.json`。
-**换歌只改三处**：`public/song.mp3`、`歌词时间轴.json`、`src/content.ts`。画面代码不用动。
+铺出的是可运行骨架：`src/scenes/S1–S4` 四屏（只算进度和构图，不持有具体图形）、`src/components/VisualStage.tsx` 通用舞台、`src/visual/` 预设与分层画法、`src/content.ts` 歌名 / 预设 / 四段秒数、根目录 `歌词时间轴.json`。
+
+**换歌改三处**：`public/song.mp3`、`歌词时间轴.json`、`src/content.ts` 的歌名与四段秒数。
+**换画面再改一处**：同文件的 `preset` 一个字符串，整套主图形、配色、转场、字幕动效、鼓点反馈一起换。详见第七节和 `references/visual-system.md`。
 
 把第 1 步量到的四段秒数填进 `src/content.ts`，`src/timing.ts` 会自动换算成帧。
+分镜阶段定下的视觉预设也写进 `content.ts`：`node scripts/scaffold.mjs <目录> ... --preset wave`（或 `city / grid / petal / dune / moon / auto`）。
 
 ### 第 4 步：歌词时间轴 + 20 秒预览，让用户校准
 
@@ -126,7 +134,8 @@ ffmpeg -y -v error -i out/mv.mp4 -t 20 -map 0:a:0 -c:a libmp3lame /tmp/mv_audio_
 
 ## 五、画面规则
 
-- 颜色、字号、间距、动画帧数**只从 `src/tokens.ts` 取**，不新造色值。换风格只改这个文件。
+- **配色从 `src/visual/presets.ts` 的 `palette` 取**，尺寸、字号、间距、动画帧数从 `src/tokens.ts` 取，不新造色值。换整套画面改 `content.ts` 的 `preset`。
+- 画面分四层：背景层 + 叠加层（光晕/云带/远山/速度线/星座）+ 主图形 + 鼓点层，四层画在**同一个 `<svg>`** 里（各层返回 `<g>`）。别拆成多个绝对定位的 svg，会出现整层不出像素。
 - 四边留 `tokens.space.safe`；歌词放中间偏下，字号 `tokens.size.lyric`。
 - 只画：圆、线、矩形、SVG path、渐变、文字。不联网、不用外部图片、不用 3D、不画人物。
 - **主歌安静，副歌爆发**：主歌元素少、动作慢、颜色暗；副歌更亮、更大、元素更多，入屏可闪白一次（≤6 帧），整体放大约 4%。
@@ -134,7 +143,7 @@ ffmpeg -y -v error -i out/mv.mp4 -t 20 -map 0:a:0 -c:a libmp3lame /tmp/mv_audio_
 - 动画只能由当前帧号或音频数据算出来。**禁用 CSS 动画、`setTimeout`、`Math.random()`**；要随机用 Remotion 的 `random('种子')`。统一缓动 `Easing.bezier(...tokens.motion.ease)`。
 - 单屏代码 ≤150 行，复杂就拆 `components/`。
 
-具体画法（月相 SVG path、同心光圈、轨道弧、星点 stagger、歌词折行、鼓点联动）见 `references/remotion-recipes.md`；歌的来源与踩坑全记录见 `references/song-sources.md`。
+具体画法（月相 SVG path、同心光圈、轨道弧、星点 stagger、歌词折行、鼓点联动）见 `references/remotion-recipes.md`；**视觉预设系统与新增母题的方法见 `references/visual-system.md`**；歌的来源与踩坑全记录见 `references/song-sources.md`。
 
 ## 六、常见失败
 
@@ -144,6 +153,8 @@ ffmpeg -y -v error -i out/mv.mp4 -t 20 -map 0:a:0 -c:a libmp3lame /tmp/mv_audio_
 | `invalid api key` | 国内站 Key 打到了国际站（或反之）。`api.minimaxi.com` ↔ `api.minimax.io` 两站 Key 不通用 |
 | 歌带封面流导致时长/解码异常 | `ffmpeg -i 输入 -map 0:a:0 -c:a copy out.mp3` 只留音频 |
 | 长句末行只剩一个字 | 优先按歌词自带空格折行，见第三节 |
+| 主图形整层消失，只剩星点/云带 | `useBass()` 在静音段返回 NaN，所有 `r={... + bass}` 变成 `r="NaN"`。已加 `Number.isFinite` 兜底；新增依赖 bass 的表达式仍要防 NaN |
+| 山脊下方多出一条水平细线 | 填充 path 的闭合底边被 `stroke` 描出来了，填充路径不要 stroke |
 | 画面不跟鼓点 | 检查 `useAudioData` 读的是不是 `song.mp3`；截过歌的帧号有没有加偏移 |
 | 人声整体比字幕早 | 裁切偏移没同步减到时间轴和节拍帧号；或根本不该裁，见第四节 |
 | `npm install` 慢 / 报网络错 | 加 `--registry=https://registry.npmmirror.com` |
@@ -154,7 +165,25 @@ ffmpeg -y -v error -i out/mv.mp4 -t 20 -map 0:a:0 -c:a libmp3lame /tmp/mv_audio_
 
 同一条命令 3 分钟没进度就停下来告诉用户卡在哪。同一个报错连修 3 次不好就停下来，把报错原文和试过的办法交给用户。
 
-## 七、仓库边界
+## 七、视觉预设系统
+
+改 `src/content.ts` 的 `preset` 一个字符串，整套画面一起换。四屏代码和舞台组件不用动。
+
+| preset | 主图形 | 配色基调 | 转场 | 字幕 | 鼓点 | 适配歌词 |
+|---|---|---|---|---|---|---|
+| `moon` | 月相 + 陨石坑 | 深蓝夜空 / 冷蓝 → 副歌暖黄 | 闪白 | 淡入居中 | 同心光圈 | 月、星、夜、温柔 |
+| `wave` | 多条正弦波 | 深海青 / 青绿 | 溶解 | 上滑 | 星点闪烁 | 海、浪、雨、风 |
+| `city` | 频谱竖条 | 紫黑 / 品红 + 琥珀 | 横扫 | 缩放左对齐 | 底部频谱柱 | 城市、街、灯、电子 |
+| `grid` | 透视网格 | 墨黑 / 电蓝 + 亮绿 | 缩放入屏 | 逐字显现 | 描边脉冲 | 未来、代码、科技 |
+| `petal` | 旋转花瓣 | 暖褐 / 珊瑚 | 溶解 | 淡入居中 | 同心光圈 | 花、春、暖、爱 |
+| `dune` | 三层山脊 | 沙棕 / 沙金 + 暮紫 | 横扫 | 上滑 | 星点闪烁 | 山、沙、远方、公路 |
+
+- `--preset auto` 按歌词关键词推荐，**只是起点**；分镜时 AI 必须结合曲风自己判断。
+- 每套预设还带 `extras`（光晕 / 云带 / 远山 / 速度线 / 星座连线），用来做景深，避免一屏只有一个图形。
+- 副歌自动把主图形从 `primary` 换成 `accent`、整体推近 5%；主歌每句横向漂移换构图。这些是舞台层行为，换预设照样生效。
+- 新增母题、分层架构、SVG 合并与 NaN 兜底的原因，全写在 `references/visual-system.md`。
+
+## 八、仓库边界
 
 - 本 Skill **不带任何歌曲文件、不带 API Key、不带成片 mp4**。用户的歌版权归用户，只放在他自己项目的 `public/`。
 - 示例 `examples/moon/` 只给源码、分镜、时间轴和静帧，不给音频。

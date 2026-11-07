@@ -1,6 +1,7 @@
 import type { CSSProperties, FC } from 'react';
 import { AbsoluteFill, Easing, interpolate, useCurrentFrame, useVideoConfig } from 'remotion';
 import { tokens } from '../tokens';
+import { getPreset } from '../visual/theme';
 import data from '../../歌词时间轴.json';
 
 type Line = { text: string; start: number; end: number; section: string };
@@ -29,6 +30,7 @@ const lineStyle: CSSProperties = {
 export const LyricLayer: FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const p = getPreset();
   const t = frame / fps;
   const idx = lines.findIndex((l) => t >= l.start && t < l.end);
   const current = idx >= 0 ? lines[idx] : null;
@@ -43,13 +45,26 @@ export const LyricLayer: FC = () => {
       })
     : 0;
   const prevOpacity = current
-    ? interpolate(local, [0, tokens.motion.normal], [0.45, 0], { extrapolateRight: 'clamp' })
+    ? interpolate(local, [0, tokens.motion.normal], [0.4, 0], { extrapolateRight: 'clamp' })
     : 0;
   const prevShift = current
     ? interpolate(local, [0, tokens.motion.normal], [0, -tokens.space.gap * 2], {
         extrapolateRight: 'clamp',
       })
     : 0;
+
+  // 四种字幕动效由 preset.lyric 决定，换预设就换字幕语言
+  const reveal = interpolate(local, [0, tokens.motion.normal], [0, 100], {
+    extrapolateRight: 'clamp',
+  });
+  let anim: CSSProperties = {};
+  if (p.lyric === 'slide') {
+    anim = { transform: `translateY(${interpolate(local, [0, tokens.motion.fast], [28, 0], { extrapolateRight: 'clamp' })}px)` };
+  } else if (p.lyric === 'scale') {
+    anim = { transform: `scale(${interpolate(local, [0, tokens.motion.fast], [0.9, 1], { extrapolateRight: 'clamp' })})` };
+  } else if (p.lyric === 'typewriter') {
+    anim = { clipPath: `inset(0 ${100 - reveal}% 0 0)` };
+  }
 
   return (
     <AbsoluteFill style={{ fontFamily: tokens.font.family, pointerEvents: 'none' }}>
@@ -60,14 +75,15 @@ export const LyricLayer: FC = () => {
           right: tokens.space.safe,
           top: 1270,
           height: 240,
-          textAlign: 'center',
+          textAlign: p.lyricAlign,
+          textShadow: `0 4px 28px ${p.palette.bg}`,
         }}
       >
         {prev && prevOpacity > 0.01 ? (
           <div
             style={{
               ...lineStyle,
-              color: tokens.color.muted,
+              color: p.palette.muted,
               opacity: prevOpacity,
               transform: `translateY(${prevShift}px)`,
             }}
@@ -78,7 +94,7 @@ export const LyricLayer: FC = () => {
           </div>
         ) : null}
         {current ? (
-          <div style={{ ...lineStyle, color: tokens.color.text, opacity: fadeIn }}>
+          <div style={{ ...lineStyle, color: p.palette.text, opacity: fadeIn, ...anim }}>
             {split(current.text).map((s, i) => (
               <div key={i}>{s}</div>
             ))}
