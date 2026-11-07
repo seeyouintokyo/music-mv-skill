@@ -1,0 +1,20 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.DS_Store
+__pycache__/
+*.pyc
+out/
+song-probe.json
+
+# 用户的歌和成片不进仓库（版权归用户、体积也大）
+public/song.mp3
+*.mp3
+*.wav
+*.m4a
+*.mp4
+*.mov
+
+# README 用的静帧保留
+!assets/preview/*.png

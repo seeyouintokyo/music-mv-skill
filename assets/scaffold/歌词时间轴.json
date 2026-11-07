@@ -1,0 +1,11 @@
+[
+  { "text": "第一句歌词", "start": 8.0, "end": 13.0, "section": "Verse" },
+  { "text": "第二句歌词", "start": 13.2, "end": 18.2, "section": "Verse" },
+  { "text": "第三句歌词", "start": 18.4, "end": 23.4, "section": "Verse" },
+  { "text": "第四句歌词", "start": 23.6, "end": 28.6, "section": "Verse" },
+  { "text": "副歌第一句 前半句", "start": 29.0, "end": 34.0, "section": "Chorus" },
+  { "text": "副歌第二句 前半句 后半句", "start": 34.2, "end": 39.4, "section": "Chorus" },
+  { "text": "副歌第三句 前半句", "start": 39.6, "end": 44.6, "section": "Chorus" },
+  { "text": "副歌第四句 前半句", "start": 44.8, "end": 49.8, "section": "Chorus" },
+  { "text": "收尾那一句", "start": 50.5, "end": 55.0, "section": "Outro" }
+]
