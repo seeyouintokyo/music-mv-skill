@@ -1,107 +1,80 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
 <rect x="0" y="0" width="1600" height="900" rx="0" fill="#FFFFFF"/>
-<text x="72" y="62" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="13" fill="#B08A6A" font-weight="400" letter-spacing="4" text-anchor="start">WORKBUDDY SKILL  /  MUSIC MV</text>
-<text x="72" y="118" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="42" fill="#1A1A1A" font-weight="600" letter-spacing="1" text-anchor="start">音乐 MV Skill 是怎么跑起来的</text>
-<text x="72" y="156" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="18" fill="#6B6B6B" font-weight="400" text-anchor="start">给一首带人声的歌 + 歌词，产出一条 ≤60 秒竖屏 mp4</text>
-<rect x="1088" y="52" width="440" height="108" rx="12" fill="#FBF8F1" stroke="#E7E1D4" stroke-width="1"/>
-<text x="1112" y="82" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="13" fill="#8C8C8C" font-weight="400" letter-spacing="2" text-anchor="start">唯一需要你提供的</text>
-<text x="1112" y="112" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="18" fill="#1A1A1A" font-weight="500" text-anchor="start">song.mp3（带人声）· 歌词.txt</text>
-<text x="1112" y="140" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#C8452D" font-weight="400" text-anchor="start">本 Skill 不生成歌，不需要 API Key</text>
-<rect x="72" y="206" width="1456" height="62" rx="12" fill="#FBF8F1" stroke="#E7E1D4" stroke-width="1"/>
-<text x="96" y="244" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#B08A6A" font-weight="600" letter-spacing="3" text-anchor="start">输入</text>
-<rect x="160" y="219" width="250" height="36" rx="9" fill="#FFFFFF" stroke="#E7E1D4" stroke-width="1"/>
-<text x="176" y="242.25" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="15" fill="#1A1A1A" font-weight="400" text-anchor="start">song.mp3  带人声</text>
-<rect x="424" y="219" width="292" height="36" rx="9" fill="#FFFFFF" stroke="#E7E1D4" stroke-width="1"/>
-<text x="440" y="242.25" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="15" fill="#1A1A1A" font-weight="400" text-anchor="start">歌词.txt  一字不改</text>
-<text x="760" y="244" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6B6B6B" font-weight="400" text-anchor="start">段落标签 / 空行 / 句中空格都要保留</text>
-<text x="1496" y="244" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#C8452D" font-weight="600" text-anchor="end">两次人工确认</text>
-<line x1="200" y1="272" x2="200" y2="318" stroke="#B9B2A2" stroke-width="1.6"/>
-<path d="M 194 317 L 200 326 L 206 317 Z" fill="#B9B2A2"/>
-<rect x="372" y="286" width="256" height="28" rx="8" fill="#FBEFEB"/>
-<text x="386" y="305" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="13" fill="#C8452D" font-weight="600" text-anchor="start">① 等用户确认分镜</text>
-<rect x="972" y="286" width="256" height="28" rx="8" fill="#FBEFEB"/>
-<text x="986" y="305" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="13" fill="#C8452D" font-weight="600" text-anchor="start">② 听预览校准歌词</text>
-<line x1="500.0" y1="314" x2="500.0" y2="322" stroke="#C8452D" stroke-width="1.6"/>
-<path d="M 494.0 321 L 500.0 330 L 506.0 321 Z" fill="#C8452D"/>
-<line x1="1100.0" y1="314" x2="1100.0" y2="322" stroke="#C8452D" stroke-width="1.6"/>
-<path d="M 1094.0 321 L 1100.0 330 L 1106.0 321 Z" fill="#C8452D"/>
-<rect x="72" y="330" width="256" height="184" rx="14" fill="#FBF8F1" stroke="#E7E1D4" stroke-width="1"/>
-<text x="92" y="362" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="13" fill="#B08A6A" font-weight="400" letter-spacing="2" text-anchor="start">01</text>
-<text x="92" y="400" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="24" fill="#1A1A1A" font-weight="600" text-anchor="start">先探歌</text>
-<text x="92" y="432" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6B6B6B" font-weight="400" text-anchor="start">ffprobe 量时长、查封面流</text>
-<text x="92" y="454" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6B6B6B" font-weight="400" text-anchor="start">ASR 量出人声起点</text>
-<text x="92" y="476" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6B6B6B" font-weight="400" text-anchor="start">没歌就停，不搭项目</text>
-<line x1="92" y1="488" x2="308" y2="488" stroke="#E7E1D4" stroke-width="1"/>
-<text x="92" y="507" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="12" fill="#C8452D" font-weight="400" text-anchor="start">probe_song.py</text>
-<rect x="372" y="330" width="256" height="184" rx="14" fill="#FBF8F1" stroke="#E7E1D4" stroke-width="1"/>
-<text x="392" y="362" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="13" fill="#B08A6A" font-weight="400" letter-spacing="2" text-anchor="start">02</text>
-<text x="392" y="400" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="24" fill="#1A1A1A" font-weight="600" text-anchor="start">写分镜</text>
-<text x="392" y="432" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6B6B6B" font-weight="400" text-anchor="start">四屏对应四个段落</text>
-<text x="392" y="454" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6B6B6B" font-weight="400" text-anchor="start">从歌词挑一个主意象</text>
-<text x="392" y="476" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6B6B6B" font-weight="400" text-anchor="start">全片不换题材</text>
-<line x1="392" y1="488" x2="608" y2="488" stroke="#E7E1D4" stroke-width="1"/>
-<text x="392" y="507" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="12" fill="#C8452D" font-weight="400" text-anchor="start">分镜.md</text>
-<rect x="672" y="330" width="256" height="184" rx="14" fill="#FBF8F1" stroke="#E7E1D4" stroke-width="1"/>
-<text x="692" y="362" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="13" fill="#B08A6A" font-weight="400" letter-spacing="2" text-anchor="start">03</text>
-<text x="692" y="400" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="24" fill="#1A1A1A" font-weight="600" text-anchor="start">铺项目</text>
-<text x="692" y="432" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6B6B6B" font-weight="400" text-anchor="start">Remotion 骨架 + tokens</text>
-<text x="692" y="454" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6B6B6B" font-weight="400" text-anchor="start">四屏组件、歌词层、鼓点</text>
-<text x="692" y="476" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6B6B6B" font-weight="400" text-anchor="start">换歌只改三处文件</text>
-<line x1="692" y1="488" x2="908" y2="488" stroke="#E7E1D4" stroke-width="1"/>
-<text x="692" y="507" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="12" fill="#C8452D" font-weight="400" text-anchor="start">scaffold.mjs</text>
-<rect x="972" y="330" width="256" height="184" rx="14" fill="#FBF8F1" stroke="#E7E1D4" stroke-width="1"/>
-<text x="992" y="362" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="13" fill="#B08A6A" font-weight="400" letter-spacing="2" text-anchor="start">04</text>
-<text x="992" y="400" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="24" fill="#1A1A1A" font-weight="600" text-anchor="start">对时间轴</text>
-<text x="992" y="432" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6B6B6B" font-weight="400" text-anchor="start">按真实人声排每一句</text>
-<text x="992" y="454" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6B6B6B" font-weight="400" text-anchor="start">渲染 20 秒预览</text>
-<text x="992" y="476" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6B6B6B" font-weight="400" text-anchor="start">按反馈改到对上</text>
-<line x1="992" y1="488" x2="1208" y2="488" stroke="#E7E1D4" stroke-width="1"/>
-<text x="992" y="507" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="12" fill="#C8452D" font-weight="400" text-anchor="start">歌词时间轴.json</text>
-<rect x="1272" y="330" width="256" height="184" rx="14" fill="#FBF8F1" stroke="#E7E1D4" stroke-width="1"/>
-<text x="1292" y="362" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="13" fill="#B08A6A" font-weight="400" letter-spacing="2" text-anchor="start">05</text>
-<text x="1292" y="400" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="24" fill="#1A1A1A" font-weight="600" text-anchor="start">画面与渲染</text>
-<text x="1292" y="432" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6B6B6B" font-weight="400" text-anchor="start">逐屏写、逐屏截图检查</text>
-<text x="1292" y="454" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6B6B6B" font-weight="400" text-anchor="start">tsc + 鼓点联动验证</text>
-<text x="1292" y="476" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6B6B6B" font-weight="400" text-anchor="start">导出 ≤60 秒竖屏 mp4</text>
-<line x1="1292" y1="488" x2="1508" y2="488" stroke="#E7E1D4" stroke-width="1"/>
-<text x="1292" y="507" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="12" fill="#C8452D" font-weight="400" text-anchor="start">out/mv.mp4</text>
-<line x1="332" y1="422" x2="360" y2="422" stroke="#B9B2A2" stroke-width="1.6"/>
-<path d="M 359 416 L 368 422 L 359 428 Z" fill="#B9B2A2"/>
-<line x1="632" y1="422" x2="660" y2="422" stroke="#B9B2A2" stroke-width="1.6"/>
-<path d="M 659 416 L 668 422 L 659 428 Z" fill="#B9B2A2"/>
-<line x1="932" y1="422" x2="960" y2="422" stroke="#B9B2A2" stroke-width="1.6"/>
-<path d="M 959 416 L 968 422 L 959 428 Z" fill="#B9B2A2"/>
-<line x1="1232" y1="422" x2="1260" y2="422" stroke="#B9B2A2" stroke-width="1.6"/>
-<path d="M 1259 416 L 1268 422 L 1259 428 Z" fill="#B9B2A2"/>
-<line x1="1400" y1="514" x2="1400" y2="544" stroke="#B9B2A2" stroke-width="1.6"/>
-<path d="M 1394 543 L 1400 552 L 1406 543 Z" fill="#B9B2A2"/>
-<rect x="72" y="556" width="1456" height="72" rx="12" fill="#FBF8F1" stroke="#E7E1D4" stroke-width="1"/>
-<text x="96" y="599" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#B08A6A" font-weight="600" letter-spacing="3" text-anchor="start">产出</text>
-<rect x="160" y="574" width="190" height="36" rx="9" fill="#FFFFFF" stroke="#E7E1D4" stroke-width="1"/>
-<text x="176" y="597.25" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="15" fill="#1A1A1A" font-weight="400" text-anchor="start">mv.mp4  ≤60s</text>
-<rect x="366" y="574" width="176" height="36" rx="9" fill="#FFFFFF" stroke="#E7E1D4" stroke-width="1"/>
-<text x="382" y="597.25" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="15" fill="#1A1A1A" font-weight="400" text-anchor="start">分镜.md</text>
-<rect x="558" y="574" width="232" height="36" rx="9" fill="#FFFFFF" stroke="#E7E1D4" stroke-width="1"/>
-<text x="574" y="597.25" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="15" fill="#1A1A1A" font-weight="400" text-anchor="start">歌词时间轴.json</text>
-<rect x="806" y="574" width="260" height="36" rx="9" fill="#FFFFFF" stroke="#E7E1D4" stroke-width="1"/>
-<text x="822" y="597.25" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="15" fill="#1A1A1A" font-weight="400" text-anchor="start">完整 Remotion 工程</text>
-<text x="1496" y="599" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6B6B6B" font-weight="400" text-anchor="end">画面全由代码画出，零外部素材</text>
-<rect x="72" y="662" width="1456" height="166" rx="14" fill="#FCFAF5" stroke="#E7E1D4" stroke-width="1"/>
-<text x="96" y="694" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="13" fill="#B08A6A" font-weight="400" letter-spacing="2" text-anchor="start">三条硬规则  /  都是踩过坑才定下来的</text>
-<text x="96" y="748" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="13" fill="#C8452D" font-weight="400" text-anchor="start">01</text>
-<text x="130" y="748" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="20" fill="#1A1A1A" font-weight="600" text-anchor="start">先探歌，没歌不搭项目</text>
-<text x="96" y="782" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="13" fill="#6B6B6B" font-weight="400" text-anchor="start">曾先渲染完一版占位伴奏，才发现歌生成不了</text>
-<text x="96" y="804" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="13" fill="#6B6B6B" font-weight="400" text-anchor="start">整条链路白跑</text>
-<line x1="552" y1="716" x2="552" y2="806" stroke="#E7E1D4" stroke-width="1"/>
-<text x="576" y="748" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="13" fill="#C8452D" font-weight="400" text-anchor="start">02</text>
-<text x="610" y="748" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="20" fill="#1A1A1A" font-weight="600" text-anchor="start">时间从真实人声来</text>
-<text x="576" y="782" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="13" fill="#6B6B6B" font-weight="400" text-anchor="start">不按 BPM 猜；歌长于 60 秒先算副歌对齐</text>
-<text x="576" y="804" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="13" fill="#6B6B6B" font-weight="400" text-anchor="start">再决定裁不裁，别把人声整体提前</text>
-<line x1="1032" y1="716" x2="1032" y2="806" stroke="#E7E1D4" stroke-width="1"/>
-<text x="1056" y="748" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="13" fill="#C8452D" font-weight="400" text-anchor="start">03</text>
-<text x="1090" y="748" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="20" fill="#1A1A1A" font-weight="600" text-anchor="start">歌词一字不改</text>
-<text x="1056" y="782" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="13" fill="#6B6B6B" font-weight="400" text-anchor="start">句中空格是字幕折行点</text>
-<text x="1056" y="804" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="13" fill="#6B6B6B" font-weight="400" text-anchor="start">改了会出现只剩一个字的孤行</text>
-<text x="72" y="866" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="13" fill="#8C8C8C" font-weight="400" text-anchor="start">music-mv · MIT · 微信 staraiwork</text>
-<text x="1528" y="866" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="13" fill="#8C8C8C" font-weight="400" text-anchor="end">结构图 SVG 可直接拖进 PPT，右键「转换为形状」逐个元素编辑</text>
+<rect x="72" y="150" width="6" height="46" rx="0" fill="#00C08B"/>
+<text x="96" y="188" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="40" fill="#1B1F35" font-weight="600" text-anchor="start">音乐 MV Skill 是怎么跑起来的</text>
+<text x="96" y="228" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="17" fill="#6E7686" font-weight="400" text-anchor="start">给一首带人声的歌 + 歌词，产出一条 ≤60 秒竖屏 mp4</text>
+<rect x="72" y="278" width="1456" height="64" rx="14" fill="#FFFFFF" stroke="#E5EAE7" stroke-width="1"/>
+<text x="96" y="318" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#009B6C" font-weight="600" letter-spacing="3" text-anchor="start">输入</text>
+<rect x="160" y="292" width="250" height="36" rx="9" fill="#FFFFFF" stroke="#E5EAE7" stroke-width="1"/>
+<text x="176" y="315.25" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="15" fill="#1B1F35" font-weight="400" text-anchor="start">song.mp3  带人声</text>
+<rect x="424" y="292" width="292" height="36" rx="9" fill="#FFFFFF" stroke="#E5EAE7" stroke-width="1"/>
+<text x="440" y="315.25" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="15" fill="#1B1F35" font-weight="400" text-anchor="start">歌词.txt  一字不改</text>
+<text x="760" y="318" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6E7686" font-weight="400" text-anchor="start">不需要 API Key、不需要外部素材</text>
+<text x="1496" y="318" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#009B6C" font-weight="600" text-anchor="end">两次人工确认</text>
+<line x1="200" y1="342" x2="200" y2="400" stroke="#A9CDBB" stroke-width="1.6"/>
+<path d="M 194 399 L 200 408 L 206 399 Z" fill="#A9CDBB"/>
+<rect x="372" y="374" width="256" height="28" rx="8" fill="#1B1F35"/>
+<text x="386" y="393" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="13" fill="#3DDC97" font-weight="600" text-anchor="start">① 等用户确认分镜</text>
+<rect x="972" y="374" width="256" height="28" rx="8" fill="#1B1F35"/>
+<text x="986" y="393" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="13" fill="#3DDC97" font-weight="600" text-anchor="start">② 听预览校准歌词</text>
+<line x1="500.0" y1="402" x2="500.0" y2="418" stroke="#00C08B" stroke-width="1.6"/>
+<path d="M 494.0 417 L 500.0 426 L 506.0 417 Z" fill="#00C08B"/>
+<line x1="1100.0" y1="402" x2="1100.0" y2="418" stroke="#00C08B" stroke-width="1.6"/>
+<path d="M 1094.0 417 L 1100.0 426 L 1106.0 417 Z" fill="#00C08B"/>
+<rect x="72" y="426" width="256" height="200" rx="14" fill="#EAF7F0" stroke="#CFEBDD" stroke-width="1"/>
+<text x="92" y="458" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="13" fill="#009B6C" font-weight="400" letter-spacing="2" text-anchor="start">01</text>
+<text x="92" y="498" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="24" fill="#1B1F35" font-weight="600" text-anchor="start">先探歌</text>
+<text x="92" y="534" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6E7686" font-weight="400" text-anchor="start">ffprobe 量时长、ASR 找人声起点</text>
+<text x="92" y="556" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6E7686" font-weight="400" text-anchor="start">没歌就停，不搭项目</text>
+<line x1="92" y1="578" x2="308" y2="578" stroke="#CFEBDD" stroke-width="1"/>
+<text x="92" y="606" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="12" fill="#009B6C" font-weight="400" text-anchor="start">probe_song.py</text>
+<rect x="372" y="426" width="256" height="200" rx="14" fill="#EAF7F0" stroke="#CFEBDD" stroke-width="1"/>
+<text x="392" y="458" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="13" fill="#009B6C" font-weight="400" letter-spacing="2" text-anchor="start">02</text>
+<text x="392" y="498" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="24" fill="#1B1F35" font-weight="600" text-anchor="start">写分镜</text>
+<text x="392" y="534" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6E7686" font-weight="400" text-anchor="start">四屏对应四个段落，一个主意象</text>
+<text x="392" y="556" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6E7686" font-weight="400" text-anchor="start">全片不换题材</text>
+<line x1="392" y1="578" x2="608" y2="578" stroke="#CFEBDD" stroke-width="1"/>
+<text x="392" y="606" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="12" fill="#009B6C" font-weight="400" text-anchor="start">分镜.md</text>
+<rect x="672" y="426" width="256" height="200" rx="14" fill="#EAF7F0" stroke="#CFEBDD" stroke-width="1"/>
+<text x="692" y="458" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="13" fill="#009B6C" font-weight="400" letter-spacing="2" text-anchor="start">03</text>
+<text x="692" y="498" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="24" fill="#1B1F35" font-weight="600" text-anchor="start">铺项目</text>
+<text x="692" y="534" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6E7686" font-weight="400" text-anchor="start">Remotion 骨架 + 四屏组件</text>
+<text x="692" y="556" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6E7686" font-weight="400" text-anchor="start">换歌只改三处文件</text>
+<line x1="692" y1="578" x2="908" y2="578" stroke="#CFEBDD" stroke-width="1"/>
+<text x="692" y="606" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="12" fill="#009B6C" font-weight="400" text-anchor="start">scaffold.mjs</text>
+<rect x="972" y="426" width="256" height="200" rx="14" fill="#EAF7F0" stroke="#CFEBDD" stroke-width="1"/>
+<text x="992" y="458" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="13" fill="#009B6C" font-weight="400" letter-spacing="2" text-anchor="start">04</text>
+<text x="992" y="498" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="24" fill="#1B1F35" font-weight="600" text-anchor="start">对时间轴</text>
+<text x="992" y="534" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6E7686" font-weight="400" text-anchor="start">按真实人声排每一句</text>
+<text x="992" y="556" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6E7686" font-weight="400" text-anchor="start">20 秒预览，听校准</text>
+<line x1="992" y1="578" x2="1208" y2="578" stroke="#CFEBDD" stroke-width="1"/>
+<text x="992" y="606" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="12" fill="#009B6C" font-weight="400" text-anchor="start">歌词时间轴.json</text>
+<rect x="1272" y="426" width="256" height="200" rx="14" fill="#EAF7F0" stroke="#CFEBDD" stroke-width="1"/>
+<text x="1292" y="458" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="13" fill="#009B6C" font-weight="400" letter-spacing="2" text-anchor="start">05</text>
+<text x="1292" y="498" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="24" fill="#1B1F35" font-weight="600" text-anchor="start">画面与渲染</text>
+<text x="1292" y="534" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6E7686" font-weight="400" text-anchor="start">逐屏截图检查、验证鼓点</text>
+<text x="1292" y="556" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6E7686" font-weight="400" text-anchor="start">导出 ≤60 秒竖屏 mp4</text>
+<line x1="1292" y1="578" x2="1508" y2="578" stroke="#CFEBDD" stroke-width="1"/>
+<text x="1292" y="606" font-family="'SF Mono','Menlo','Consolas',monospace" font-size="12" fill="#009B6C" font-weight="400" text-anchor="start">out/mv.mp4</text>
+<line x1="332" y1="526" x2="360" y2="526" stroke="#A9CDBB" stroke-width="1.6"/>
+<path d="M 359 520 L 368 526 L 359 532 Z" fill="#A9CDBB"/>
+<line x1="632" y1="526" x2="660" y2="526" stroke="#A9CDBB" stroke-width="1.6"/>
+<path d="M 659 520 L 668 526 L 659 532 Z" fill="#A9CDBB"/>
+<line x1="932" y1="526" x2="960" y2="526" stroke="#A9CDBB" stroke-width="1.6"/>
+<path d="M 959 520 L 968 526 L 959 532 Z" fill="#A9CDBB"/>
+<line x1="1232" y1="526" x2="1260" y2="526" stroke="#A9CDBB" stroke-width="1.6"/>
+<path d="M 1259 520 L 1268 526 L 1259 532 Z" fill="#A9CDBB"/>
+<line x1="1400" y1="626" x2="1400" y2="666" stroke="#A9CDBB" stroke-width="1.6"/>
+<path d="M 1394 665 L 1400 674 L 1406 665 Z" fill="#A9CDBB"/>
+<rect x="72" y="678" width="1456" height="72" rx="14" fill="#EAF7F0"/>
+<text x="96" y="721" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#009B6C" font-weight="600" letter-spacing="3" text-anchor="start">产出</text>
+<rect x="160" y="696" width="190" height="36" rx="9" fill="#FFFFFF" stroke="#CFEBDD" stroke-width="1"/>
+<text x="176" y="719.25" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="15" fill="#1B1F35" font-weight="400" text-anchor="start">mv.mp4  ≤60s</text>
+<rect x="366" y="696" width="176" height="36" rx="9" fill="#FFFFFF" stroke="#CFEBDD" stroke-width="1"/>
+<text x="382" y="719.25" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="15" fill="#1B1F35" font-weight="400" text-anchor="start">分镜.md</text>
+<rect x="558" y="696" width="232" height="36" rx="9" fill="#FFFFFF" stroke="#CFEBDD" stroke-width="1"/>
+<text x="574" y="719.25" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="15" fill="#1B1F35" font-weight="400" text-anchor="start">歌词时间轴.json</text>
+<rect x="806" y="696" width="260" height="36" rx="9" fill="#FFFFFF" stroke="#CFEBDD" stroke-width="1"/>
+<text x="822" y="719.25" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="15" fill="#1B1F35" font-weight="400" text-anchor="start">完整 Remotion 工程</text>
+<text x="1496" y="721" font-family="'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif" font-size="14" fill="#6E7686" font-weight="400" text-anchor="end">画面全部由代码画出</text>
 </svg>
